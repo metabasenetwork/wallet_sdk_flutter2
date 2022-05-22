@@ -38,7 +38,7 @@ class WalletMNT {
   static const _channel = MethodChannel('wallet_sdk_flutter');
 
   ///
-  static Future<String> createMNTTransaction({
+  static Future<String?> createMNTTransaction({
     required List<Map<String, dynamic>> utxos,
     required String address,
     required int timestamp,
@@ -75,7 +75,7 @@ class WalletMNT {
     return result;
   }
 
-  static Future<bool> validateBBCAddress(Map<String, dynamic> params) async {
+  static Future<bool?> validateBBCAddress(Map<String, dynamic> params) async {
     final result = await _channel.invokeMethod<bool>(
       'validateBBCAddress',
       params,
@@ -154,7 +154,7 @@ class WalletMNT {
     );
   }
 
-  static Future<String> addressMNTToPublicKey({
+  static Future<String?> addressMNTToPublicKey({
     required String address,
   }) async {
     final publicKey = await _channel.invokeMethod<String>(

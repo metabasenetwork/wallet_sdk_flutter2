@@ -40,7 +40,7 @@ class WalletCoreOptions {
 class WalletCore {
   static const _channel = MethodChannel('wallet_sdk_flutter');
 
-  static Future<bool> validateAddress({
+  static Future<bool?> validateAddress({
     required String chain,
     required String address,
     required bool isBeta,
@@ -58,13 +58,13 @@ class WalletCore {
     }
   }
 
-  static Future<String> generateMnemonic() async {
+  static Future<String?> generateMnemonic() async {
     final mnemonic = await _channel.invokeMethod<String>('generateMnemonic');
     return mnemonic;
   }
 
   //true is valid
-  static Future<bool> validateMnemonic(String mnemonic) async {
+  static Future<bool?> validateMnemonic(String mnemonic) async {
     final isValid = await _channel.invokeMethod<bool>(
       'validateMnemonic',
       mnemonic,
@@ -105,7 +105,7 @@ class WalletCore {
     );
   }
 
-  static Future<String> exportPrivateKey({
+  static Future<String?> exportPrivateKey({
     required String mnemonic,
     required String path,
     required String password,
@@ -127,7 +127,7 @@ class WalletCore {
     return privateKey;
   }
 
-  static Future<String> signTx({
+  static Future<String?> signTx({
     required String mnemonic,
     required String path,
     required String password,
@@ -153,7 +153,7 @@ class WalletCore {
     return signedTx;
   }
 
-  static Future<String> signMsg({
+  static Future<String?> signMsg({
     required String mnemonic,
     required String path,
     required String password,
@@ -179,7 +179,7 @@ class WalletCore {
     return result;
   }
 
-  static Future<String> signMsgWithPKAndBlake({
+  static Future<String?> signMsgWithPKAndBlake({
     required String privateKey,
     required String msg,
   }) async {

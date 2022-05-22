@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 class WalletTRX {
   static const _channel = MethodChannel('wallet_sdk_flutter');
 
-  static Future<String> createTRXTransaction({
+  static Future<String?> createTRXTransaction({
     required List<Map<String, dynamic>> utxos,
     required String toAddress,
     required double toAmount,
@@ -27,7 +27,7 @@ class WalletTRX {
     return result;
   }
 
-  static Future<bool> validateTRXAddress(Map<String, dynamic> params) async {
+  static Future<bool?> validateTRXAddress(Map<String, dynamic> params) async {
     final result = await _channel.invokeMethod<bool>(
       'validateTRXAddress',
       params,

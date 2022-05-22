@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 class WalletETH {
   static const _channel = MethodChannel('wallet_sdk_flutter');
 
-  static Future<String> createETHTransaction({
+  static Future<String?> createETHTransaction({
     required int nonce,
     required int gasLimit,
     required String address,
@@ -27,7 +27,7 @@ class WalletETH {
     return result;
   }
 
-  static Future<bool> validateETHAddress(Map<String, dynamic> params) async {
+  static Future<bool?> validateETHAddress(Map<String, dynamic> params) async {
     final result = await _channel.invokeMethod<bool>(
       'validateETHAddress',
       params,

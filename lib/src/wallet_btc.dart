@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 class WalletBTC {
   static const _channel = MethodChannel('wallet_sdk_flutter');
 
-  static Future<String> createBTCTransaction({
+  static Future<String?> createBTCTransaction({
     required List<Map<String, dynamic>> utxos,
     required String toAddress,
     required double toAmount,
@@ -29,7 +29,7 @@ class WalletBTC {
     return result;
   }
 
-  static Future<bool> validateBTCAddress(Map<String, dynamic> params) async {
+  static Future<bool?> validateBTCAddress(Map<String, dynamic> params) async {
     final result = await _channel.invokeMethod<bool>(
       'validateBTCAddress',
       params,
